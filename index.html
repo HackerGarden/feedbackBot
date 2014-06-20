@@ -1,0 +1,72 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    var githubURL, postData, imgurURL;
+
+    function sendToImgur() {
+      var x = (postData.img).replace('data:image/png;base64','');
+      $.ajax({
+        url: 'https://api.imgur.com/3/image',
+        method: 'POST',
+        headers: {
+          Authorization: 'Client-ID f96237dac275b5e',
+          Accept: 'application/json'
+        },
+        data: {
+          image: x,
+          type: 'base64'
+        },
+        success: function(result) {
+          var id = result.data.id;
+          imgurURL = String('https://i.imgur.com/gallery/' + id);
+          sendToGithub()
+        }
+      });
+    }
+    
+    function sendToGithub(){
+      $.ajax({
+        url: githubURL,
+        method: 'POST',
+        headers: {
+          "Authorization" : 'Basic f45e4f69923dbf75c0e88b11355a4ccf97d36890',
+          "Accept" : 'application/json',
+          "User-Agent" : 'davidfurlong'
+        },
+        data: {
+          "title": "Feedback report",
+          "body": post.note+"\n![screenshot]("+imgurURL+")\n"+post.browser+"\n"+post.html,
+          "labels": [
+            "feedback"
+          ]
+        },
+        success: function(result) {
+          console.log('success');
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <script src="feedback.js"></script>
+  <link rel="stylesheet" href="feedback.min.css" />
+  <script type="text/javascript">
+    $.feedback({
+      ajaxURL: 'https://api.github.com/repos/davidfurlong/radialmenu/issues',
+      html2canvasURL: 'html2canvas.js'
+    });
+
+    function sendData(githubURLl, postDatal){
+      githubURL = githubURLl;
+      postData = postDatal;
+      sendToImgur()
+    }
+  </script>
+
+  <button class="feedback-btn feedback-btn-gray">Send feedback</button>
+</body>
+</html>
+
+
+    
