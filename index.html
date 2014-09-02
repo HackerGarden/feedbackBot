@@ -1,8 +1,10 @@
 <html>
 <head>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script>
+  <script src="base64.js"></script>
+  <script>  
     var githubURL, postData, imgurURL;
+    var githubpath = "davidfurlong/radialmenu";
 
     function sendToImgur() {
       var x = (postData.img).replace('data:image/png;base64','');
@@ -19,30 +21,38 @@
         },
         success: function(result) {
           var id = result.data.id;
-          imgurURL = String('https://i.imgur.com/gallery/' + id);
-          sendToGithub()
+          imgurURL = String('https://i.imgur.com/' + id+'.png');
+          sendToServer()
         }
       });
     }
     
-    function sendToGithub(){
+    function sendToServer(){
       $.ajax({
-        url: githubURL,
-        method: 'POST',
-        headers: {
-          "Authorization" : 'Basic f45e4f69923dbf75c0e88b11355a4ccf97d36890',
-          "Accept" : 'application/json',
-          "User-Agent" : 'davidfurlong'
-        },
-        data: {
-          "title": "Feedback report",
-          "body": post.note+"\n![screenshot]("+imgurURL+")\n"+post.browser+"\n"+post.html,
-          "labels": [
+        url: "http://frozen-thicket-5722.herokuapp.com",
+        type: 'POST',
+        crossDomain: true,
+        // headers: {
+        //   "Accept" : 'application/json',
+        // },
+        contentType: 'application/json',
+        data: JSON.stringify({
+          url: githubpath,
+          title: "Feedback item",
+          body: post.note+"\n![screenshot]("+imgurURL+")\n"+post.browser+"\n",
+          labels: [
             "feedback"
           ]
-        },
+        }),
+        dataType: 'text',
         success: function(result) {
-          console.log('success');
+          console.log(result);
+          //$('#feedback-module').append(settings.tpl.submitSuccess);
+        },
+        error: function(error) {
+          console.error('Failed to connect');
+          console.log(error);
+          //$('#feedback-module').append(settings.tpl.submitError);
         }
       });
     }
@@ -53,7 +63,7 @@
   <link rel="stylesheet" href="feedback.min.css" />
   <script type="text/javascript">
     $.feedback({
-      ajaxURL: 'https://api.github.com/repos/davidfurlong/radialmenu/issues',
+      ajaxURL: 'davidfurlong/radialmenu',
       html2canvasURL: 'html2canvas.js'
     });
 
@@ -62,9 +72,9 @@
       postData = postDatal;
       sendToImgur()
     }
-  </script>
 
-  <button class="feedback-btn feedback-btn-gray">Send feedback</button>
+  </script>
+  <button class="feedback-btn feedback-btn-blue">Send feedback</button>
 </body>
 </html>
 

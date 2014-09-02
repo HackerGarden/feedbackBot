@@ -1,11 +1,11 @@
-feedback
+simple feedback 
 ========
 
-Feedback tool similar to the Google Feedback based on jQuery and HTML2Canvas.
-
-Feel free to flattr me if you like it: [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=ivoviz&url=https://github.com/ivoviz/feedback&title=feedback&language=&tags=github&category=software)
+Feedback tool similar to the Google Feedback which sends feedback to a specified repo's github issues.
 
 ## Usage
+
+Change the destination repo
 
 Load jQuery, the plugin, and its CSS:
 ```html

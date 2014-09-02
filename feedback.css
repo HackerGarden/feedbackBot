@@ -135,9 +135,6 @@
   padding: 10px;
   outline: 0;
   background-clip: padding-box;
-  -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.2);
-  -moz-box-shadow: 0 4px 16px rgba(0,0,0,.2);
-  box-shadow: 0 4px 16px rgba(0,0,0,.2);
   z-index: 40000;
 }
 .feedback-btn-gray {
