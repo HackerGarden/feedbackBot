@@ -1,11 +1,12 @@
-simple feedback 
+veryfeedback 
 ========
 
-Feedback tool similar to the Google Feedback which sends feedback to a specified repo's github issues.
+The simplest feedback tool out there.
+Include veryfeedback and receive screenshots, description and browser info straight in your github issues.
+
+Built as a clone to Google's Feedback process (which is arguably the best) 
 
 ## Usage
-
-Change the destination repo
 
 Load jQuery, the plugin, and its CSS:
 ```html

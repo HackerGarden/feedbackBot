@@ -22,12 +22,14 @@
         success: function(result) {
           var id = result.data.id;
           imgurURL = String('https://i.imgur.com/' + id+'.png');
+          $('#feedback-canvas').remove();
           sendToServer()
         }
       });
     }
     
     function sendToServer(){
+      console.log(window.x = post.browser);
       $.ajax({
         url: "http://frozen-thicket-5722.herokuapp.com",
         type: 'POST',
@@ -38,11 +40,9 @@
         contentType: 'application/json',
         data: JSON.stringify({
           url: githubpath,
-          title: "Feedback item",
-          body: post.note+"\n![screenshot]("+imgurURL+")\n"+post.browser+"\n",
-          labels: [
-            "feedback"
-          ]
+          title: "Feedback: "+post.note.substring(0,20),
+          body: post.note+"\n![screenshot]("+imgurURL+")\n"+JSON.stringify(post.browser)+"\n",
+          labels: ["feedback"]
         }),
         dataType: 'text',
         success: function(result) {
