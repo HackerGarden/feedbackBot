@@ -2,78 +2,17 @@
 <head>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="base64.js"></script>
-  <script>  
-    var githubURL, postData, imgurURL;
-    var githubpath = "davidfurlong/radialmenu";
-
-    function sendToImgur() {
-      var x = (postData.img).replace('data:image/png;base64','');
-      $.ajax({
-        url: 'https://api.imgur.com/3/image',
-        method: 'POST',
-        headers: {
-          Authorization: 'Client-ID f96237dac275b5e',
-          Accept: 'application/json'
-        },
-        data: {
-          image: x,
-          type: 'base64'
-        },
-        success: function(result) {
-          var id = result.data.id;
-          imgurURL = String('https://i.imgur.com/' + id+'.png');
-          $('#feedback-canvas').remove();
-          sendToServer()
-        }
-      });
-    }
-    
-    function sendToServer(){
-      console.log(window.x = post.browser);
-      $.ajax({
-        url: "http://frozen-thicket-5722.herokuapp.com",
-        type: 'POST',
-        crossDomain: true,
-        // headers: {
-        //   "Accept" : 'application/json',
-        // },
-        contentType: 'application/json',
-        data: JSON.stringify({
-          url: githubpath,
-          title: "Feedback: "+post.note.substring(0,20),
-          body: post.note+"\n![screenshot]("+imgurURL+")\n"+JSON.stringify(post.browser)+"\n",
-          labels: ["feedback"]
-        }),
-        dataType: 'text',
-        success: function(result) {
-          console.log(result);
-          //$('#feedback-module').append(settings.tpl.submitSuccess);
-        },
-        error: function(error) {
-          console.error('Failed to connect');
-          console.log(error);
-          //$('#feedback-module').append(settings.tpl.submitError);
-        }
-      });
-    }
-  </script>
-</head>
-<body>
   <script src="feedback.js"></script>
   <link rel="stylesheet" href="feedback.min.css" />
   <script type="text/javascript">
     $.feedback({
-      ajaxURL: 'davidfurlong/radialmenu',
-      html2canvasURL: 'html2canvas.js'
+      html2canvasURL: 'html2canvas.js',
+      githubpath: 'davidfurlong/radialmenu',
+      serverURL: 'http://feedbackbot.herokuapp.com'
     });
-
-    function sendData(githubURLl, postDatal){
-      githubURL = githubURLl;
-      postData = postDatal;
-      sendToImgur()
-    }
-
   </script>
+</head>
+<body>
   <button class="feedback-btn feedback-btn-blue">Send feedback</button>
 </body>
 </html>

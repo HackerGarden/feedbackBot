@@ -4,16 +4,20 @@
 
 (function($){
 
+
+
 	$.feedback = function(options) {
 	
         var settings = $.extend({
-			ajaxURL: 			'',
+        	imgurURL: 			'',
+        	serverURL: 			'',
+			githubpath:         '',
 			postBrowserInfo: 	true,
 			postHTML:			true,
 			postURL:			true,
 			proxy:				undefined,
 			letterRendering:	false,
-			initButtonText: 	'Send feedback',
+			initButtonText: 	'Feedback',
 			strokeStyle:		'black',
 			shadowColor:		'black',
 			shadowOffsetX:		1,
@@ -498,7 +502,7 @@
 						post.img = img;
 						post.note = $('#feedback-note').val();
 
-						sendData(settings.ajaxURL,post);
+						sendToImgur();
 					}
 					else {
 						$('#feedback-overview-error').show();
@@ -574,7 +578,57 @@
 			ctx.shadowBlur		= 0;
 			ctx.lineWidth		= 1;
 		}
-	
+
+		function sendToImgur() {
+			var x = (post.img).replace('data:image/png;base64','');
+			$.ajax({
+			  url: 'https://api.imgur.com/3/image',
+			  method: 'POST',
+			  headers: {
+			    Authorization: 'Client-ID f96237dac275b5e',
+			    Accept: 'application/json'
+			  },
+			  data: {
+			    image: x,
+			    type: 'base64'
+			  },
+			  success: function(result) {
+			    var id = result.data.id;
+			    settings.imgurURL = String('https://i.imgur.com/' + id+'.png');
+			    $('#feedback-canvas').remove();
+			    sendToServer()
+			  }
+			});
+		}
+
+		function sendToServer() {
+			$.ajax({
+			  url: settings.serverURL,
+			  type: 'POST',
+			  crossDomain: true,
+			  // headers: {
+			  //   "Accept" : 'application/json',
+			  // },
+			  contentType: 'application/json',
+			  data: JSON.stringify({
+			    url: settings.githubpath,
+			    title: "Feedback: "+post.note.substring(0,20),
+			    body: post.note+"\n![screenshot]("+settings.imgurURL+")\n"+JSON.stringify(post.browser)+"\n",
+			    labels: ["feedback"]
+			  }),
+			  dataType: 'text',
+			  success: function(result) {
+			    console.log(result);
+			    //$('#feedback-module').append(settings.tpl.submitSuccess);
+			  },
+			  error: function(error) {
+			    console.error('Failed to connect');
+			    console.log(error);
+			    //$('#feedback-module').append(settings.tpl.submitError);
+			  }
+			});
+		}
+
 	};
 	
 }(jQuery));
