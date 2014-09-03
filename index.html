@@ -1,21 +1,53 @@
-<html>
-<head>
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="base64.js"></script>
-  <script src="feedback.js"></script>
-  <link rel="stylesheet" href="feedback.min.css" />
-  <script type="text/javascript">
-    $.feedback({
-      html2canvasURL: 'html2canvas.js',
-      githubpath: 'davidfurlong/radialmenu',
-      serverURL: 'http://feedbackbot.herokuapp.com'
-    });
-  </script>
-</head>
-<body>
-  <button class="feedback-btn feedback-btn-blue">Feedback</button>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>FeedbackBot</title>
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- Feedbackbot -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="src/base64.js"></script>
+    <script src="src/feedback.js"></script>
+    <link rel="stylesheet" href="src/feedback.css" />
+    <script type="text/javascript">
+      $.feedback({
+        html2canvasURL: 'src/html2canvas.js',
+        githubpath: 'davidfurlong/radialmenu',
+        serverURL: 'http://feedbackbot.herokuapp.com'
+      });
+    </script>
+  </head>
+
+  <body>
+  	<div id="headerwrap">
+  	    <div class="container">
+    			<div class="row">
+    				<div class="col-lg-8 col-lg-offset-2">
+    					<h1>FEEDBACKBOT</h1>
+    					<h4>Super simple feedback button for your website, feedback delivered to your github issues with screencaps, browser info and feedback.</h4>
+              <h2>
+              <a href="https://github.com/ToolsforSociety/feedbackBot"><i class="fa fa-github"></i> Github</a>
+              </h2>
+    				</div>
+    			</div>
+  	    </div>
+        <button class="feedback-btn feedback-btn-blue">Feedback</button>
+  	</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
 </html>
-
-
-    
