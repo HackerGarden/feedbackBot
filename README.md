@@ -20,9 +20,9 @@ Init plugin:
 ```html
     <script type="text/javascript">
         $.feedback({
-		html2canvasURL: 'src/html2canvas.js',
+	        html2canvasURL: 'src/html2canvas.js',
         	githubpath: 'ToolsforSociety/feedbackBot',
-        	serverURL: 'http://feedbackbot.herokuapp.com'
+	        serverURL: 'http://feedbackbot.herokuapp.com'
       });
     </script>
 ```
