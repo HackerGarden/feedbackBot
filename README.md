@@ -21,8 +21,8 @@ Init plugin:
     <script type="text/javascript">
         $.feedback({
 	        html2canvasURL: 'src/html2canvas.js',
-        	githubpath: 'ToolsforSociety/feedbackBot',
-	        serverURL: 'http://feedbackbot.herokuapp.com'
+        	githubpath: 'ToolsforSociety/feedbackBot', // CHANGE THIS TO YOUR PATH
+	        serverURL: 'http://feedbackbot.herokuapp.com' // YOU CAN HOST YOUR OWN GITHUB BOT IF YOU WANT
       });
     </script>
 ```
