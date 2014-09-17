@@ -27,6 +27,11 @@ Init plugin:
     </script>
 ```
 
+Add the button
+```html
+ <button class="feedback-btn feedback-btn-blue">Feedback</button>
+```
+
 ## Requirements
 
 * jQuery
