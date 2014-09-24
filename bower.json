@@ -6,7 +6,7 @@
     "David Furlong <dvfurlong@googlemail.com>"
   ],
   "description": "Add a feedback button to your website that posts to your github issues",
-  "main": "['src/base64.js', 'src/feedback.css', 'src/feedback.js', 'src/html2canvas.min.js', 'src/icons.png']",
+  "main": "dist/feedback.0.1.0.js",
   "moduleType": [
     "globals"
   ],
@@ -20,8 +20,8 @@
     "issues"
   ],
   "dependencies": {
-    "jquery": "1.3"    
-  }
+    "jquery": ">=1.3"    
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
