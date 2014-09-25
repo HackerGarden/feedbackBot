@@ -13,6 +13,15 @@
   background-clip: padding-box;
   z-index: 40000;
 }
+.feedback-btn.feedback-placement-left {
+  position: fixed;
+  left: -40px;
+  top: 50%;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+  height: 50px;
+}
 #feedback-module p {  font-size: 13px }
 #feedback-note-tmp {
   width: 444px;

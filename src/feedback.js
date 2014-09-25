@@ -12,6 +12,7 @@
         	imgurURL: 			'',
         	serverURL: 			'',
 			githubpath:         '',
+			placement: 			'bottom',
 			postBrowserInfo: 	true,
 			postHTML:			true,
 			postURL:			true,
