@@ -8,6 +8,10 @@ Built as a clone to Google's Feedback process
 
 ## Usage
 
+bower install feedback-bot
+
+OR
+
 Load jQuery, the plugin, and its CSS:
 ```html
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -15,6 +19,8 @@ Load jQuery, the plugin, and its CSS:
     <script src="src/feedback.js"></script>
     <link rel="stylesheet" href="src/feedback.css" />
 ```
+
+AND THEN
 
 Init plugin:
 ```html
