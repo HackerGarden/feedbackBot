@@ -13,6 +13,7 @@
         	serverURL: 			'',
 			githubpath:         '',
 			placement: 			'bottom',
+			hexColor:  			'#146eb4',
 			postBrowserInfo: 	true,
 			postHTML:			true,
 			postURL:			true,
@@ -45,7 +46,7 @@
 		var supportedBrowser = !!window.HTMLCanvasElement;
 		
 		if (supportedBrowser) {
-			$('body').append('<button class="feedback-btn feedback-btn-gray">' + settings.initButtonText + '</button>');
+			$('body').append('<button style="background:'+settings.hexColor+'" class="feedback-btn feedback-btn-blue feedback-placement-'+settings.placement+'">' + settings.initButtonText + '</button>');
 			$(document).on('click', '.feedback-btn', function(){
 				$(this).hide();
 				

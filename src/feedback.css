@@ -1,8 +1,5 @@
 .feedback-btn {
   font-size: 14px;
-  position: fixed;
-  bottom: -3px;
-  right: 60px;
   width: auto;
   padding: 10px 20px;
   letter-spacing: 1px;
@@ -12,6 +9,11 @@
   outline: 0;
   background-clip: padding-box;
   z-index: 40000;
+}
+.feedback-btn.feedback-placement-bottom {
+  position: fixed;
+  bottom: -3px;
+  right: 60px;
 }
 .feedback-btn.feedback-placement-left {
   position: fixed;
