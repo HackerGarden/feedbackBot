@@ -4,8 +4,6 @@
 
 (function($){
 
-
-
 	$.feedback = function(options) {
 	
         var settings = $.extend({
@@ -46,7 +44,7 @@
 		var supportedBrowser = !!window.HTMLCanvasElement;
 		
 		if (supportedBrowser) {
-			$('body').append('<button style="background:'+settings.hexColor+'" class="feedback-btn feedback-btn-blue feedback-placement-'+settings.placement+'">' + settings.initButtonText + '</button>');
+			$('body').eq(0).append('<button style="background:'+settings.hexColor+'" class="feedback-btn feedback-btn-blue feedback-placement-'+settings.placement+'">' + settings.initButtonText + '</button>');
 			$(document).on('click', '.feedback-btn', function(){
 				$(this).hide();
 				
@@ -68,7 +66,7 @@
 				
 				tpl += settings.tpl.highlighter + settings.tpl.overview + '<canvas id="feedback-canvas"></canvas><div id="feedback-helpers"></div><input id="feedback-note" name="feedback-note" type="hidden"></div>';
 				
-				$('body').append(tpl);
+				$('body').eq(0).append(tpl);
 				
 				moduleStyle = {
 					'position':	'absolute',
@@ -450,12 +448,12 @@
 					if (!settings.screenshotStroke)
 						redraw(ctx, false);
 						
-					html2canvas($('body'), {
+					html2canvas($('body').eq(0), {
 						onrendered: function(canvas) {
 							if (!settings.screenshotStroke)
 								redraw(ctx);
 								
-							_canvas = $('<canvas id="feedback-canvas-tmp" width="'+ w +'" height="'+ dh +'"/>').hide().appendTo('body');
+							_canvas = $('<canvas id="feedback-canvas-tmp" width="'+ w +'" height="'+ dh +'"/>').hide().appendTo($('body').eq(0));
 							_ctx = _canvas.get(0).getContext('2d');
 							_ctx.drawImage(canvas, 0, sy, w, dh, 0, 0, w, dh);
 							img = _canvas.get(0).toDataURL();

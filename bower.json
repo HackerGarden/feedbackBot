@@ -1,12 +1,12 @@
 {
   "name": "Feedback-Bot",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/ToolsforSociety/feedback-client",
   "authors": [
     "David Furlong <dvfurlong@googlemail.com>"
   ],
   "description": "Add a feedback button to your website that posts to your github issues",
-  "main": ["dist/feedback.0.1.0.js", "src/icons.png", "src/feedback.css"],
+  "main": ["dist/feedback.0.3.1.js", "src/icons.png", "src/feedback.css"],
   "moduleType": [
     "globals"
   ],
